@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
-import Greetings from './components/Greetings'
+import Greetings from './components/Greetings';
 import GreetingProps from './interfaces/GreetingProps';
-
-import TestPassFunction from './components/TestPassFunction'
-
-import NameList from './components/Namelist'
+import Counter from './components/Counter';
+import TestPassFunction from './components/TestPassFunction';
+import NameList from './components/Namelist';
 import NameListProps from './interfaces/NameListProps';
+import Post from './components/Post';
+import ChatRoom from './components/ChatRoom'
 
 import Task from './interfaces/Task';
 // interface GreetingProps {
@@ -16,30 +17,56 @@ import Task from './interfaces/Task';
 // }
 
 function App() {
-  let greetObject:GreetingProps={"name":"Plisson","surname":"Cathy"};
-  let testAlertParent=(value:string)=> alert(value);
+  let greetObject: GreetingProps = { "name": "Plisson", "surname": "Cathy" };
+  let testAlertParent = (value: string) => alert(value);
 
 
-  let taskList:Task[]=[];
+  let taskList: Task[] = [];
 
 
   taskList.push(
-    {title:"learn react",descrption:"so good"}
+    {
+      title: "learn react",
+      descrption: "so good"
+    }
   );
   taskList.push(
-    {title:"learn mongo db",descrption:"wow"}
+    { title: "learn mongo db", descrption: "wow" }
   );
 
-let listTask: NameListProps={tasks:taskList}
+  let listTask: NameListProps = { tasks: taskList }
+  const [roomId, setRoomId] = useState('general');
+  const [idPostState, setIdPostState] = useState("1");
+  const handleChange = (value: string) => {
+    setIdPostState(value)
+  }
+
+  // <Greetings {...greetObject} />
+  // <TestPassFunction testAlert={(value:string)=>testAlertParent(value)}/>
+  // <NameList {...listTask} />
+  // <Counter />
+  // <Post />
 
 
 
   return (
     <div className="App">
       <header className="App-header">
-        <Greetings {...greetObject} />
-        <TestPassFunction testAlert={(value:string)=>testAlertParent(value)}/>
-        <NameList {...listTask} />
+        <label>
+          Choose the chat room:{' '}
+          <select
+            value={roomId}
+            onChange={e => setRoomId(e.target.value)}
+          >
+            <option value="general">general</option>
+            <option value="travel">travel</option>
+            <option value="music">music</option>
+          </select>
+        </label>
+
+        <ChatRoom roomId={roomId} />
+        <input type="text" value={idPostState} onChange={(e) => handleChange(e.target.value)} ></input>
+        <Post postid={idPostState} />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
