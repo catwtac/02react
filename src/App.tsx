@@ -9,8 +9,9 @@ import NameList from './components/Namelist';
 import NameListProps from './interfaces/NameListProps';
 import Post from './components/Post';
 import ChatRoom from './components/ChatRoom'
-
+import CalculTva from './components/CalculTva';
 import Task from './interfaces/Task';
+import ComponentInput from './components/form/ComponentInput';
 // interface GreetingProps {
 //   name:string;
 //   surname:string;
@@ -47,30 +48,35 @@ function App() {
   // <Counter />
   // <Post />
 
+  // <label>
+  //         Choose the chat room:{' '}
+  //         <select
+  //           value={roomId}
+  //           onChange={e => setRoomId(e.target.value)}
+  //         >
+  //           <option value="general">general</option>
+  //           <option value="travel">travel</option>
+  //           <option value="music">music</option>
+  //         </select>
+  //       </label>
+  /* <ChatRoom roomId={roomId} />
+          <input type="text" value={idPostState} onChange={(e) => handleChange(e.target.value)} ></input>
+          <Post postid={idPostState} />*/
+
 
 
   return (
     <div className="App">
       <header className="App-header">
-        <label>
-          Choose the chat room:{' '}
-          <select
-            value={roomId}
-            onChange={e => setRoomId(e.target.value)}
-          >
-            <option value="general">general</option>
-            <option value="travel">travel</option>
-            <option value="music">music</option>
-          </select>
-        </label>
 
-        <ChatRoom roomId={roomId} />
-        <input type="text" value={idPostState} onChange={(e) => handleChange(e.target.value)} ></input>
-        <Post postid={idPostState} />
-        <img src={logo} className="App-logo" alt="logo" />
+
+
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <img src={logo} className="App-logo" alt="logo" />
+
+        <CalculTva />
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -80,7 +86,9 @@ function App() {
           Learn React
         </a>
       </header>
+
     </div>
+
   );
 }
 
