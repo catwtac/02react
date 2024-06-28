@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import calculPourcentage from '../utils/tvaFunction';
 import ICalculTva from '../interfaces/ICalcultva';
 import ComponentInput from './form/ComponentInput';
-
-
-
+import { UserContext } from './context/ThemeUserProvider';
 
 const CalculTva: React.FC = () => {
+    const useContextValue = useContext(UserContext);
 
-    const calculTvaObject: ICalculTva = { nombreACalculer: 0, tva: 0,"information":"info" }
+
+    if (!useContextValue) {
+        throw new Error('usecontext must be used within a UserProvider');
+    }
+
+
+    const calculTvaObject: ICalculTva = { nombreACalculer: 0, tva: 0, "information": "info" }
     const [calculTvaState, setCalculTvaState] = useState(calculTvaObject);
     // const [nombreACalculer, setNombreACalculer] = useState<number>(0);
     // const [tva, setTva] = useState<number>(0);
@@ -39,7 +44,7 @@ const CalculTva: React.FC = () => {
 
     return (
         <div>
-
+            {useContextValue?.user}
             <input type="number" onChange={(e) => handleChange("nombreACalculer",
                 parseFloat(e.target.value))} value={calculTvaState.nombreACalculer}
                 placeholder='Nombre à calculer'></input>
@@ -55,8 +60,8 @@ const CalculTva: React.FC = () => {
 
             <div>Résultat: {resultat!}</div>
 
-            <ComponentInput type={type} value={calculTvaState.information} 
-            placeholder={placeholder} onChangeInput={(valueOfInput: any) => handleChange("information", valueOfInput)} />
+            <ComponentInput type={type} value={calculTvaState.information}
+                placeholder={placeholder} onChangeInput={(valueOfInput: any) => handleChange("information", valueOfInput)} />
 
         </div>
     )

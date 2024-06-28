@@ -36,10 +36,23 @@
     transform: rotate(360deg);
   }
 }
+.inputcolor {
+  color: blue;
+}
+
+.stateColor {
+  font-size: 40px;
+  background-color: blue;
+}
+
 input {
   color: black;
 }
 
 textarea {
   color: black;
+}
+
+.webStyle {
+  background-color: red;
 }

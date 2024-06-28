@@ -12,6 +12,13 @@ import ChatRoom from './components/ChatRoom'
 import CalculTva from './components/CalculTva';
 import Task from './interfaces/Task';
 import ComponentInput from './components/form/ComponentInput';
+import UseRefV1 from './components/UseRefV1';
+import UseRefV2 from './components/UseRefV2';
+import UseRefV3 from './components/UseRefV3';
+import UseRefV4 from './components/UseRefV4';
+import UseContextV1 from './components/UseContextV1';
+import UseReducerV1 from './components/UseReducerV1'
+
 // interface GreetingProps {
 //   name:string;
 //   surname:string;
@@ -47,7 +54,12 @@ function App() {
   // <NameList {...listTask} />
   // <Counter />
   // <Post />
-
+  // <CalculTva />
+  //       <UseRefV1 />
+  //       <UseRefV2 />
+  //       <UseRefV3 />
+  //       <UseRefV4 />
+  //      
   // <label>
   //         Choose the chat room:{' '}
   //         <select
@@ -76,7 +88,10 @@ function App() {
         </p>
         <img src={logo} className="App-logo" alt="logo" />
 
-        <CalculTva />
+      
+        <UseReducerV1 />
+        <UseContextV1 />
+        
         <a
           className="App-link"
           href="https://reactjs.org"
